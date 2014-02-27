@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="UTILS" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/UTILS" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/UTILS" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="../../Makefile" />
+		<Unit filename="../../Makefile.bak" />
+		<Unit filename="../../SI/soloiceskyutils.IAB" />
+		<Unit filename="../../SI/soloiceskyutils.IAD" />
+		<Unit filename="../../SI/soloiceskyutils.IMB" />
+		<Unit filename="../../SI/soloiceskyutils.IMD" />
+		<Unit filename="../../SI/soloiceskyutils.PFI" />
+		<Unit filename="../../SI/soloiceskyutils.PO" />
+		<Unit filename="../../SI/soloiceskyutils.PR" />
+		<Unit filename="../../SI/soloiceskyutils.PRI" />
+		<Unit filename="../../SI/soloiceskyutils.PS" />
+		<Unit filename="../../SI/soloiceskyutils.SearchResults" />
+		<Unit filename="../../SI/soloiceskyutils.WK3" />
+		<Unit filename="../../SRC/Utils.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../SRC/Utils.h" />
+		<Unit filename="../../SRC/Utils.o" />
+		<Unit filename="../../SRC/UtilsTest.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../SRC/UtilsTest.o" />
+		<Unit filename="../../libUtils.a" />
+		<Unit filename="../../main.exe" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

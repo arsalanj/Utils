@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1375486607 source:/home/soloicesky/workspace/soloicesky.com.utils/SRC/UtilsTest.c
+	<stdio.h>
+	"Utils.h"
+
+1376698874 /home/soloicesky/workspace/soloicesky.com.utils/SRC/Utils.h
+	<string.h>
+	"UserType.h"
+
+1377984960 /home/soloicesky/workspace/soloicesky.com.utils/SRC/UserType.h
+
+1392535795 source:/home/soloicesky/workspace/soloicesky.com.utils/SRC/Utils.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Utils.h"
+	"ErrorNo.h"
+
+1383063722 /home/soloicesky/workspace/soloicesky.com.utils/SRC/ErrorNo.h
+

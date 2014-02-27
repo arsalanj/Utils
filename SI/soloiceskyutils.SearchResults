@@ -1,0 +1,4 @@
+---- hexStringToByteArray Matches (3 in 3 files) ----
+Utils.c (src):int32 hexStringToByteArray(byteArray desBytearray, int32 *byteArrayLen, cstring hexString)
+Utils.h (src):int32 hexStringToByteArray(byteArray desBytearray, int32 *byteArrayLen, cstring hexString);
+UtilsTest.c (src):	ret = hexStringToByteArray (BA, &len, hexStr);
