@@ -19,17 +19,19 @@ extern "C" {
 #define BIT2		(0x02)
 #define BIT1		(0x01)
 
+#define CHECK_M(a)		((a)==NULL)
 
+#define CLEAR_BUFF(b)	memset((b), 0x00, sizeof((b)))
 
-#define VALIDATEHEXSTRING(s) ((strlen((s))%2)==0)?1:0 //ÅÐ¶ÏÊÇ·ñÊÇºÏ·¨µÄÓÉ×Ö½ÚÊý×é×ª»»¹ýÀ´µÄÊ®Áù½øÖÆ×Ö·û´®
+#define VALIDATEHEXSTRING(s) ((strlen((s))%2)==0)?1:0 //ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ÇºÏ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½
 
-#define UPERCASE(c) ((c)>='a' && (c)<='z')?((c)-0x20):(c)  //×ª´óÐ´
+#define UPERCASE(c) ((c)>='a' && (c)<='z')?((c)-0x20):(c)  //×ªï¿½ï¿½Ð´
 
 #define LOWECASE(c)	 ((c)>='a' && (c)<='z')?((c)+0x20):(c) //×ªÐ¡Ð´
 
-#define DECCHECK(c)	((c)>='0' && (c) <= '9')			//Ê®½øÖÆ×Ö·û?
+#define DECCHECK(c)	((c)>='0' && (c) <= '9')			//Ê®ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½?
 
-#define HEXCHECK(c)	 (((c)>='0' && (c) <= '9') || ((c)>='a' && (c) <= 'f') || ((c)>='A' && (c) <= 'F'))  	//Ê®Áù½øÖÆ×Ö·û?
+#define HEXCHECK(c)	 (((c)>='0' && (c) <= '9') || ((c)>='a' && (c) <= 'f') || ((c)>='A' && (c) <= 'F'))  	//Ê®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½?
 
 #define SETBITS(a, b)	((a) |= (b))	
 
