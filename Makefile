@@ -4,7 +4,7 @@
 #CC:= $(CAROSSROOT)/arm-linux-gcc
 CC:= gcc
 AR:= ar
-CFLAGS:= -shared -fPIC -Wall
+CFLAGS:= -shared -fPIC -Wall -g
 SRC = $(wildcard SRC/*.c)
 OBJS = $(SRC:.c=.o)
 

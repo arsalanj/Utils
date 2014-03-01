@@ -2,12 +2,16 @@
 #define _UTILS_H_
 
 #include <string.h>
+#include <assert.h>
+#include <stdlib.h>
 
 #include "UserType.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+#define ERR_ALLOCMEM_FAIL		-20
 
 #define BIT8		(0x80)
 #define BIT7		(0x40)
@@ -55,6 +59,8 @@ int64 byteArrayToLong(byteArray data, byte len);
 
 int32 byteArrayToInt(byteArray data, byte len);
 
+int compressTrackData(unsigned char *desCMPData, unsigned short *desLen,
+		char *srcTrackData) ;
 
 #ifdef __cplusplus
 }

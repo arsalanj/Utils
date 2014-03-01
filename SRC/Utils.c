@@ -4,7 +4,6 @@
 #include "Utils.h"
 #include "ErrorNo.h"
 
-
 int32 toUperCase(cstring str)
 {
 	if(str == NULL)
@@ -12,13 +11,12 @@ int32 toUperCase(cstring str)
 		return ERR_INVALID_PARAMETER;
 	}
 
-	do{
+	do {
 		*str = UPERCASE (*str);
 	}while(*(++str));
 
 	return 0;
 }
-
 
 int32 toLowerCase(cstring str)
 {
@@ -27,14 +25,12 @@ int32 toLowerCase(cstring str)
 		return ERR_INVALID_PARAMETER;
 	}
 
-	do{
+	do {
 		*str = LOWECASE (*str);
 	}while(*(++str));
 
 	return 0;
 }
-
-
 
 inline int32 getCharIndex(cstring str, tchar ch)
 {
@@ -46,15 +42,13 @@ inline int32 getCharIndex(cstring str, tchar ch)
 	return (strstr(str, temp) - str);
 }
 
-
-
 int32 hexStringToByteArray(byteArray desBytearray, int32 *byteArrayLen, cstring hexString)
 {
 	tchar hexNumbers[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
 	int32 i = 0;
 
-	if(desBytearray == NULL || byteArrayLen == NULL || \
-		hexString == NULL)
+	if(desBytearray == NULL || byteArrayLen == NULL ||
+	hexString == NULL)
 	{
 		return ERR_INVALID_PARAMETER;
 	}
@@ -69,7 +63,7 @@ int32 hexStringToByteArray(byteArray desBytearray, int32 *byteArrayLen, cstring 
 		return ERR_CONVERT_TYPE;
 	}
 
-	do{
+	do {
 		desBytearray[i/2] = (getCharIndex(hexNumbers, hexString[i]) << 4) | getCharIndex(hexNumbers, hexString[i+1]);
 		i+=2;
 	}while(hexString[i]);
@@ -78,20 +72,18 @@ int32 hexStringToByteArray(byteArray desBytearray, int32 *byteArrayLen, cstring 
 	return 0;
 }
 
-
-
 int32 byteArrayToHexString(cstring desHexString, byteArray srcByteArray, int32 srcByteArrayLen)
 {
 	tchar hexNumbers[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
 	int32 i = 0;
 
-	if(desHexString == NULL || srcByteArray == NULL || \
-		srcByteArrayLen<= 0)
+	if(desHexString == NULL || srcByteArray == NULL ||
+	srcByteArrayLen<= 0)
 	{
 		return ERR_INVALID_PARAMETER;
 	}
 
-	do{
+	do {
 		desHexString[i*2] = hexNumbers[(srcByteArray[i]&0xF0) >> 4];
 		desHexString[i*2 + 1] = hexNumbers[(srcByteArray[i]&0x0F)];
 	}while((++i) < srcByteArrayLen);
@@ -99,7 +91,6 @@ int32 byteArrayToHexString(cstring desHexString, byteArray srcByteArray, int32 s
 	desHexString[srcByteArrayLen*2] = 0x00;
 	return 0;
 }
-
 
 int64 bcdNumericToLong(byteArray bcdNumeric, byte len)
 {
@@ -116,7 +107,6 @@ int64 bcdNumericToLong(byteArray bcdNumeric, byte len)
 	return atol(buf);
 }
 
-
 int64 byteArrayToLong(byteArray data, byte len)
 {
 	int64 result = 0;
@@ -130,7 +120,6 @@ int64 byteArrayToLong(byteArray data, byte len)
 	return result;
 }
 
-
 int32 byteArrayToInt(byteArray data, byte len)
 {
 	int32 result = 0;
@@ -142,5 +131,42 @@ int32 byteArrayToInt(byteArray data, byte len)
 	}
 
 	return result;
+}
+
+int compressTrackData(unsigned char *desCMPData, unsigned short *desLen,
+		char *srcTrackData) {
+	//add your to do here
+	tchar hexNumbers[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+	int32 i = 0;
+
+	if(CHECK_M(desCMPData) || CHECK_M(desLen) || CHECK_M(srcTrackData))
+	{
+		return ERR_ALLOCMEM_FAIL;
+	}
+
+
+	while(srcTrackData[i])
+	{
+		srcTrackData[i] = ((srcTrackData[i] == '=')?'D':srcTrackData[i]);
+	}
+
+	if(0 == VALIDATEHEXSTRING(srcTrackData))
+	{
+		return ERR_INVALID_PARAMETER;
+	}
+
+	if(toUperCase (srcTrackData) != 0)
+	{
+		return ERR_CONVERT_TYPE;
+	}
+
+	do {
+		desCMPData[i/2] = (getCharIndex(hexNumbers, srcTrackData[i]) << 4) | getCharIndex(hexNumbers, srcTrackData[i+1]);
+		i+=2;
+	}while(srcTrackData[i]);
+
+	*desLen = strlen(srcTrackData)/2;
+	return 0;
+
 }
 
